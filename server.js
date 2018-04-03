@@ -6,7 +6,7 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const bodyParser = require('body-parser');
-var http = require('http');
+var serv = require('http').createServer();
 //const morgan = require('morgan');
 const methodOverride = require('method-override')
 //const cors = require('cors');
@@ -110,52 +110,8 @@ app.get('/', (req, res) => {
 
 app.get('/about', function(req, res) {
     res.render('pages/about');
-});/*
-app.get('/edituts', function(req, res) {
-    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] })
-    .then(function(doc) {
-    res.render('pages/edituts', {items: doc});
-    });
 });
-app.get('/editquiz', function(req, res) {
-    res.render('pages/editquiz');
-});
-app.get('/solcir', function(req, res) {
-    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "sol" } ] })
-    .then(function(doc) {
-    res.render('pages/solcir', {items: doc});
-    });
-});
-app.get('/defpar', function(req, res) {
-    tutmod.find({ $and: [ { topic: "par" }, { lesson: "def" } ] })
-    .then(function(doc) {
-    res.render('pages/defpar', {items: doc});
-    });
-});
-app.get('/solpar', function(req, res) {
-    res.render('pages/solpar');
-});
-app.get('/defell', function(req, res) {
-    res.render('pages/defell');
-});
-app.get('/solell', function(req, res) {
-    res.render('pages/solell');
-});
-app.get('/defhyp', function(req, res) {
-    res.render('pages/defhyp');
-});
-app.get('/solhyp', function(req, res) {
-    res.render('pages/solhyp');
-});
-app.get('/quizpar', function(req, res) {
-    res.render('pages/quizpar');
-});
-app.get('/quizell', function(req, res) {
-    res.render('pages/quizell');
-});
-app.get('/quizhyp', function(req, res) {
-    res.render('pages/quizhyp');
-});*/
+
 app.get('/inpututs', function(req, res) {
     res.render('pages/inpututs');
 });
@@ -331,14 +287,22 @@ app.delete('/files/:id', (req, res) => {
         res.redirect('/');
     });
 });
-const port = 5000;
-/*app.set('port', process.env.PORT || 22);
+
+var port = process.env.PORT || 3000;
+
+serv.listen(port, function() {
+  console.log('Listening on ' + port);
+});
+
+/*const port = 80;
+app.set('port', process.env.PORT || 22);
 app.set('host', process.env.HOST || '13.92.60.20');
 
 http.createServer(app).listen(app.get('port'), app.get('host'), function(){
     console.log("Express server listening on port " + app.get('port'));
-});*/
-//app.listen(process.env.PORT || 5000);
+});
+app.listen(process.env.PORT || 5000);
+
 app.listen(port, () => 
     console.log(`Server started on port ${port}`)
-);
+);*/
