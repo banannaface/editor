@@ -6,12 +6,17 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const bodyParser = require('body-parser');
-var serv = require('http').createServer();
-//const morgan = require('morgan');
-const methodOverride = require('method-override')
-//const cors = require('cors');
- 
+const methodOverride = require('method-override');
 const app = express();
+
+var http = require('http');
+var fs = require('fs');
+//var data = fs.readFileSync('defcir.json');
+//var datamismo = JSON.parse(data);
+
+
+ 
+
 //app.use(morgan('dev'));
 app.use(express.static(__dirname + '/bootstrapv4'));
 app.use(express.static(__dirname + '/images'));
@@ -57,10 +62,7 @@ conn.once('open', () => {
     gfs = Grid(conn.db, mongoose.mongo);
     gfs.collection('uploads');
  
-
 })
-
-
 
 const storage = new GridFsStorage({
     url: mongoURI,
@@ -125,7 +127,14 @@ app.get('/edituts', function(req, res, next) {
     tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] })
       .then(function(doc) {
          
-          res.render('pages/edituts', {items: doc});
+            res.render('pages/edituts', {items: doc});
+            
+            var bytedata = JSON.stringify(doc, null, 2);
+            fs.writeFile('defcir.json', bytedata, finished);
+
+            function finished(err){
+                console.log('all set');
+            }
       });
   
   });
@@ -212,7 +221,7 @@ app.post('/insert', function(req, res, next) {
   var data = new tutmod(item);
   data.save();
     
-  res.redirect('back');
+  res.redirect('/edituts');
 });
 //@route POST /upload 
 app.post('/upload', upload.single('file'), (req, res) =>{
@@ -288,21 +297,18 @@ app.delete('/files/:id', (req, res) => {
     });
 });
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5000;
 
-serv.listen(port, function() {
+app.listen(port, function() {
   console.log('Listening on ' + port);
 });
-
-/*const port = 80;
-app.set('port', process.env.PORT || 22);
+/*app.set('port', process.env.PORT || 22);const port = 5000;
 app.set('host', process.env.HOST || '13.92.60.20');
 
 http.createServer(app).listen(app.get('port'), app.get('host'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
 app.listen(process.env.PORT || 5000);
-
 app.listen(port, () => 
     console.log(`Server started on port ${port}`)
 );*/
