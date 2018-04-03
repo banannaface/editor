@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body style="background-image:url(background.png); background-size: 100% 100%">
+        <br><br>
+        <script src="../js/jquery-3.2.1.slim.min.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 m-auto text-center" style="background-color:beige">
+                   
+                    <h1 class="text-center display-4 my-4">Update Tutorials</h1>
+                    
+                    <form action="/insert" method="POST">
+                        <div class="input">
+                            <textarea style="width:100%" rows="5" cols="70" name="content">
+                                
+                            </textarea>
+                        </div>
+                        <div class="input">
+                            <label for="type">Type</label>
+                            <input type="text" id="type" name="type">
+                        </div>
+                        <div class="input">
+                            <label for="top">Topic</label>
+                            <input type="text" id="top" name="topic">
+                        </div>
+                        <div class="input">
+                            <label for="less">Lesson</label>
+                            <input type="text" id="less" name="lesson">
+                        </div>
+                        <div class="input">
+                            <label for="num">num</label>
+                            <input type="number" id="num" name="num">
+                        </div>
+                        <button type="submit" class="btn-primary btn-block btn-lg">INSERT</button>
+                    </form>
+                    
+                    
+                </div>  
+            </div>
+        </div>
+        
+    </body>
+    <footer>
+        <% include ../partials/footer %>   
+    </footer>
+</html>

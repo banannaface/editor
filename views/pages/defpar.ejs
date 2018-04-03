@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body style="background-image:url(background.png); background-size: 100% 100%">
+        <br><br>
+        <script src="../js/jquery-3.2.1.slim.min.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 m-auto" style="background-color:beige">
+                    <% include ../partials/header %>
+                    <h1 class="text-center display-4 my-4">Defining Parabola</h1>
+                
+                    <% if(items){ %>
+                        <% items.forEach(function(item) { %>
+                            <div class="media">
+                                <div class="media-body">
+                            
+                                    Content: <%= item.content %>
+                                    ID: <%= item._id %>
+                                </div>
+                                    <img class="ml-3" src="del.png" alt="del" style="width:20px; height:20px">
+                                    <img class="ml-3" src="update.png" alt="update" style="width:20px; height:20px">
+                            </div>
+                            <hr>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No records to show.</p>
+                    <% } %>
+
+                    <a href="inpututs" class="btn btn-primary btn-block btn-lg" role="button" aria-pressed="true">Edit</a>
+ 
+                
+                </div>  
+            </div>
+        </div>
+        
+    </body>
+    <footer>
+        <% include ../partials/footer %>   
+    </footer>
+</html>
