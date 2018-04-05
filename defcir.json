@@ -1,0 +1,83 @@
+[
+  {
+    "_id": "5ac1214494fb515e6c4501c0",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": " &emsp;In algebraic terms, a circle is the set of points (x, y) at some fixed distance (r) from some fixed point (h, k). \r\n        The value of r is called the <i>\"radius\"</i> of the circle, and the point (h, k) is called the <i>\"center\"</i> of the circle.\r\n        Circle may also be considered a special kind of ellipse.\r\n        <br>&emsp;Twice the radius = <i>Diameter</i>\r\n        <br>&emsp;Perimeter = <i>&emsp;Circumference.</i>                               \r\n                            ",
+    "num": 1,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12b6994fb515e6c4501c1",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "This means that if diameter is 1 then circumference is 3.14, which is pi (&pi;).<br>\r\n            That is why circumference is 2r&pi;, since diameter = 2r.                                \r\n                            ",
+    "num": 2,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12ba794fb515e6c4501c2",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "&emsp;The figure above has center at C(h, k) and radius is more than 0. A point P(x, y) is on the circle if and only if\r\n        line PC= r. For any such point then, its coordinates should satisfy the following:                                \r\n                            ",
+    "num": 3,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12bfe94fb515e6c4501c3",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "<p><br>\r\n          This is the <b>Standard Equation</b> of a circle with center at (h,k) and radius r. (aka center-radius form)\r\n          <br>If the center is at the origin then h=0 and k=0. &emsp;The standard equation is then,</p>                                \r\n                            ",
+    "num": 4,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12d9294fb515e6c4501c4",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "&emsp;The standard Equation of a circle with center at (5,-6) and a radius of 6 would be,                                \r\n                            ",
+    "num": 5,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12dcd94fb515e6c4501c5",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "&emsp;After expanding the standard equation, it can be written as,                                \r\n                            ",
+    "num": 6,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12e1594fb515e6c4501c6",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "&emsp;This is an equation in general form.                                \r\n                            ",
+    "num": 7,
+    "__v": 0
+  },
+  {
+    "_id": "5ac12e6d94fb515e6c4501c7",
+    "type": "title",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "Using General Equation to determine Standard Equation                                \r\n                            ",
+    "num": 1,
+    "__v": 0
+  },
+  {
+    "_id": "5ac1308f94fb515e6c4501c8",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "def",
+    "content": "We can determine the standard equation by completing the square of both variables of the general equation.                                \r\n                            ",
+    "num": 8,
+    "__v": 0
+  }
+]
