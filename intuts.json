@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "5ac1313b94fb515e6c4501c9",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "int",
+    "content": "Conic sections are formed by the intersection of a plane and a cone. there are four main conic sections - circle, parabola, ellipse and hyperbola.                                \r\n                            ",
+    "num": 1,
+    "__v": 0
+  },
+  {
+    "_id": "5ac1318194fb515e6c4501ca",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "int",
+    "content": "A circle is the set of points in a plane that are <b>equidistant from a given point</b>, called the <i>center.</i>\r\n          The distance from the center to a point in the circle is called the <i>radius.</i>\r\n          Twice the radius is known as the <i>diameter.</i>                                \r\n                            ",
+    "num": 2,
+    "__v": 0
+  },
+  {
+    "_id": "5ac131b494fb515e6c4501cb",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "int",
+    "content": "A parabola is a curve where any point is at <b>an equal distance</b> from:\r\n            <br>\r\n            &ensp;&ensp;a fixed point (the <i>focus</i>), and<br>\r\n            &ensp;&ensp;a fixed straight line (the <i>directrix</i>)                                \r\n                            ",
+    "num": 3,
+    "__v": 0
+  },
+  {
+    "_id": "5ac131dc94fb515e6c4501cc",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "int",
+    "content": "An ellipse is the set of all points on a plane whose distance\tfrom two fixed points F and G <b>add up to a constant.</b>\r\n            \"F\" is a focus, \"G\" is a focus, and together they are called <i>foci.</i> (pronounced \"fo-sigh\")                                \r\n                            ",
+    "num": 4,
+    "__v": 0
+  },
+  {
+    "_id": "5ac1323194fb515e6c4501cd",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "int",
+    "content": "A hyperbola is a curve where the distances of any point from:&ensp;a fixed point (the <i>focus</i>), and&ensp;a fixed straight line (the <i>directrix</i>)<b> are always in the same ratio.</b>\r\n            The hyperbola is an open curve (has no ends).                                \r\n                            ",
+    "num": 5,
+    "__v": 0
+  },
+  {
+    "_id": "5ac1327c94fb515e6c4501ce",
+    "type": "para",
+    "topic": "cir",
+    "lesson": "int",
+    "content": "A non-linear system of equations is a system in which at least one of the variables has an exponent other than 1.                              \r\n                            ",
+    "num": 6,
+    "__v": 0
+  }
+]

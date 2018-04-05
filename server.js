@@ -123,6 +123,22 @@ app.get('/inputquiz', function(req, res) {
 
 //@route POST /upload 
 
+app.get('/intuts', function(req, res, next) {
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "int" } ] })
+      .then(function(doc) {
+         
+            res.render('pages/intuts', {items: doc});
+            
+            var bytedata = JSON.stringify(doc, null, 2);
+            fs.writeFile('intuts.json', bytedata, finished);
+
+            function finished(err){
+                console.log('all set');
+            }
+      });
+  
+  });
+
 app.get('/edituts', function(req, res, next) {
     tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] })
       .then(function(doc) {
@@ -144,42 +160,90 @@ app.get('/solcir', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "cir" }, { lesson: "sol" } ] })
     .then(function(doc) {
     res.render('pages/solcir', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('solcir.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }
     });
 });
 app.get('/defpar', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "par" }, { lesson: "def" } ] })
     .then(function(doc) {
     res.render('pages/defpar', {items: doc});
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('defpar.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }
+
     });
 });
+
 app.get('/solpar', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "par" }, { lesson: "sol" } ] })
     .then(function(doc) {
     res.render('pages/solpar', {items: doc});
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('solpar.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/defell', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "ell" }, { lesson: "def" } ] })
     .then(function(doc) {
     res.render('pages/defell', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('defell.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/solell', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "ell" }, { lesson: "sol" } ] })
     .then(function(doc) {
     res.render('pages/solell', {items: doc});
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('solell.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/defhyp', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "def" } ] })
     .then(function(doc) {
     res.render('pages/defhyp', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('defhyp.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/solhyp', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "sol" } ] })
     .then(function(doc) {
     res.render('pages/solhyp', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('solhyp.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 
@@ -188,24 +252,52 @@ app.get('/editquiz', function(req, res, next) {
   tutmod.find({ topic: "cir" })
     .then(function(doc) {
     res.render('pages/editquiz', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('quizcir.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/quizpar', function(req, res, next) {
   tutmod.find({ topic: "par" })
     .then(function(doc) {
     res.render('pages/quizpar', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('quizpar.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/quizell', function(req, res, next) {
   tutmod.find({ topic: "ell" })
     .then(function(doc) {
     res.render('pages/quizell', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('quizell.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 app.get('/quizhyp', function(req, res, next) {
   tutmod.find({ topic: "hyp" })
     .then(function(doc) {
     res.render('pages/quizhyp', {items: doc});
+
+        var bytedata = JSON.stringify(doc, null, 2);
+        fs.writeFile('quizhyp.json', bytedata, finished);
+
+        function finished(err){
+            console.log('all set');
+        }   
     });
 });
 //insert
