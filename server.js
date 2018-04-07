@@ -7,6 +7,8 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const cors = require('cors');
+const morgan = require('morgan');  
 const app = express();
 
 var http = require('http');
@@ -17,19 +19,27 @@ var fs = require('fs');
 
  
 
-//app.use(morgan('dev'));
+
 app.use(express.static(__dirname + '/bootstrapv4'));
 app.use(express.static(__dirname + '/images'));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('_method'));
-//app.use(cors());
+app.use(cors());
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+ });
  
 const mongoURI = 'mongodb://anna:wannabearockstar@ds012678.mlab.com:12678/agtutsdtbs';
 
 const conn = mongoose.createConnection(mongoURI);
-
 mongoose.connect(mongoURI);
 var Schema = mongoose.Schema;
 
@@ -123,7 +133,20 @@ app.get('/api/tutorials', function(req, res) {
         res.json(tutorials); // return all reviews in JSON format
     });
 });
+app.get('/api/quiz', function(req, res) {
 
+    console.log("fetching quizzes");
+
+    // use mongoose to get all reviews in the database
+    quizmod.find(function(err, quizzes) {
+
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err)
+            res.send(err)
+
+        res.json(quizzes); // return all reviews in JSON format
+    });
+});
 
 app.get('/about', function(req, res) {
     res.render('pages/about');
