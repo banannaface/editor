@@ -3,7 +3,7 @@
     <head>
         <% include ../partials/head %>
     </head>
-    <body style="background-image:url(background.png); background-size: 100% 100%">
+    <body style="background-image:url(background.png); background-size: 100%">
         <br><br>
         <script src="../js/jquery-3.2.1.slim.min.js"></script>
         <script src="../js/popper.min.js"></script>
@@ -13,6 +13,20 @@
                 <div class="col-md-6 m-auto" style="background-color:beige">
                     <% include ../partials/header %>
                     <h1 class="text-center display-4 my-4">Solving Hyperbola</h1>
+                    <% if(items){ %>
+                        <% items.forEach(function(item) { %>
+                            <div class="media">
+                                <div class="media-body">
+                                    Content: <%= item.content %>
+                                </div>              
+                                <a href="<%= item._id %>"><img class="ml-3" src="update.png" alt="update" style="width:20px; height:20px"></a>
+                            </div>
+                            <hr>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No records to show.</p>
+                    <% } %>
+                
                 </div>  
             </div>
         </div>

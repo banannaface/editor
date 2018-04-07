@@ -12,39 +12,39 @@
             <div class="row">
                 <div class="col-md-6 m-auto" style="background-color:beige">
                     <% include ../partials/header %>
-                    <h1 class="text-center display-4 my-4">Add New Question</h1>
+                    <h1 class="text-center display-4 my-4">Update Quiz</h1>
                
-                    <form action="/insertquiz" method="POST">
+                    <form action="/updatequiz" method="POST">
                         <div class="input">
                             <textarea style="width:100%" rows="10" cols="70" name="question"><%= question %></textarea>
                         </div>
                         <div class="input">
                             
-                            <input type="hidden" id="type" name="topic">
+                            <input type="hidden" value= "<%= topic %>" id="type" name="topic">
                         </div>
                         <div class="input">
-                            <input type="text" id="top" name="choice1">
+                            <input type="text" value= "<%= choice1 %>" id="top" name="choice1">
                             
                         </div>
                         <div class="input">
                             
-                            <input type="text" id="less" name="choice2">
+                            <input type="text" value= "<%= choice2 %>" id="less" name="choice2">
                         </div>
                         <div class="input">
                           
-                            <input type="text" id="num" name="choice3">
+                            <input type="text" value= "<%= choice3 %>" id="num" name="choice3">
                         </div>
                         <div class="input">
                           
-                            <input type="text" id="id" name="choice4">
+                            <input type="text" value= "<%= choice4 %>" id="id" name="choice4">
                         </div>
                         <div class="input">
                           
-                            <input type="hidden" id="id" name="num">
+                            <input type="hidden" value= "<%= num %>" id="id" name="num">
                         </div>
                         <div class="input">
                           
-                            <input type="hidden" id="id" name="id">
+                            <input type="hidden" value= "<%= id %>" id="id" name="id">
                         </div>
                         <button type="submit" class="btn-primary btn-block btn-lg">INSERT</button>
                     </form>

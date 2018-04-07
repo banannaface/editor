@@ -110,7 +110,7 @@ app.get('/', (req, res) => {
     gfs.files.find().toArray((err, files) => {
         //check if there are files
         if (!files || files.length === 0) {
-            res.render('index', {files: false});
+           return res.render('index', {files: false});
         }else{
             files.map(file => {
                 if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === 'image/jpg' || file.contentType === 'image/gif'){
@@ -127,134 +127,136 @@ app.get('/', (req, res) => {
  
 });
 
-// tutoprials for app to get
+// tutorials for app to get
 app.get('/api/intall', function(req, res) {
     console.log("fetching intro tutorial");
     // use mongoose to get all reviews in the database
-    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "int" } ] })
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "int" } ] }).sort( { num: 1 } )
         .then(function(err, introtuts) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(introtuts); // return all reviews in JSON format
     });
 });
 
 app.get('/api/defcir', function(req, res) {
     console.log("fetching defcir");
-    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] })
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] }).sort( { num: 1 } )
         .then(function(err, defcir) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(defcir);
     });
 });
 app.get('/api/solcir', function(req, res) {
     console.log("fetching solcir");
-    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "sol" } ] })
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "sol" } ] }).sort( { num: 1 } )
         .then(function(err, solcir) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(solcir);
     });
 });
 app.get('/api/defpar', function(req, res) {
     console.log("fetching defpar");
-    tutmod.find({ $and: [ { topic: "par" }, { lesson: "def" } ] })
+    tutmod.find({ $and: [ { topic: "par" }, { lesson: "def" } ] }).sort( { num: 1 } )
         .then(function(err, defpar) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(defpar);
     });
 });
 app.get('/api/solpar', function(req, res) {
     console.log("fetching solpar");
-    tutmod.find({ $and: [ { topic: "par" }, { lesson: "sol" } ] })
+    tutmod.find({ $and: [ { topic: "par" }, { lesson: "sol" } ] }).sort( { num: 1 } )
         .then(function(err, solpar) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(solpar);
     });
 });
 app.get('/api/defell', function(req, res) {
     console.log("fetching defell");
-    tutmod.find({ $and: [ { topic: "ell" }, { lesson: "def" } ] })
+    tutmod.find({ $and: [ { topic: "ell" }, { lesson: "def" } ] }).sort( { num: 1 } )
         .then(function(err, defell) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(defell);
     });
 });
 app.get('/api/solell', function(req, res) {
     console.log("fetching solell");
-    tutmod.find({ $and: [ { topic: "ell" }, { lesson: "sol" } ] })
+    tutmod.find({ $and: [ { topic: "ell" }, { lesson: "sol" } ] }).sort( { num: 1 } )
         .then(function(err, solell) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(solell);
     });
 });
 app.get('/api/defhyp', function(req, res) {
     console.log("fetching defhyp");
-    tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "def" } ] })
+    tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "def" } ] }).sort( { num: 1 } )
         .then(function(err, defhyp) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(defhyp);
     });
 });
 app.get('/api/solhyp', function(req, res) {
     console.log("fetching solhyp");
-    tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "sol" } ] })
+    tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "sol" } ] }).sort( { num: 1 } )
         .then(function(err, solhyp) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(solhyp);
     });
 });
 // quizzes for app to get
 app.get('/api/cirquiz', function(req, res) {
     console.log("fetching cirquiz");
-    quizmod.find({ topic: "cir" })
+    quizmod.find({ topic: "cir" }).sort( { num: 1 } )
         .then(function(err, cirquizzes) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(cirquizzes); 
     });
 });
 app.get('/api/parquiz', function(req, res) {
     console.log("fetching parquiz");
-    quizmod.find({ topic: "par" })
+    quizmod.find({ topic: "par" }).sort( { num: 1 } )
         .then(function(err, parquizzes) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(parquizzes); 
     });
 });
 app.get('/api/ellquiz', function(req, res) {
     console.log("fetching ellquiz");
-    quizmod.find({ topic: "ell" })
+    quizmod.find({ topic: "ell" }).sort( { num: 1 } )
         .then(function(err, ellquizzes) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(ellquizzes); 
     });
 });
 app.get('/api/hypquiz', function(req, res) {
     console.log("fetching hypquiz");
-    quizmod.find({ topic: "hyp" })
+    quizmod.find({ topic: "hyp" }).sort( { num: 1 } )
         .then(function(err, hypquizzes) {
         if (err)
-            res.send(err)
+        return res.send(err)
         res.json(quizzes); 
     });
 });
+
 
 app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
 app.get('/inpututs', function(req, res) {
+    
     res.render('pages/inpututs');
 });
 app.get('/inputquiz', function(req, res) {
@@ -266,7 +268,7 @@ app.get('/inputquiz', function(req, res) {
 app.get('/intuts', function(req, res, next) {
     tutmod.find({ $and: [ { topic: "cir" }, { lesson: "int" } ] })
       .then(function(doc) {
-         
+           
             res.render('pages/intuts', {items: doc});
            
       });
@@ -338,28 +340,28 @@ app.get('/solhyp', function(req, res, next) {
 
 //quiz
 app.get('/editquiz', function(req, res, next) {
-  tutmod.find({ topic: "cir" })
+  quizmod.find({ topic: "cir" })
     .then(function(doc) {
     res.render('pages/editquiz', {items: doc});
 
     });
 });
 app.get('/quizpar', function(req, res, next) {
-  tutmod.find({ topic: "par" })
+    quizmod.find({ topic: "par" })
     .then(function(doc) {
     res.render('pages/quizpar', {items: doc});
 
     });
 });
 app.get('/quizell', function(req, res, next) {
-  tutmod.find({ topic: "ell" })
+    quizmod.find({ topic: "ell" })
     .then(function(doc) {
     res.render('pages/quizell', {items: doc});
 
     });
 });
 app.get('/quizhyp', function(req, res, next) {
-  tutmod.find({ topic: "hyp" })
+    quizmod.find({ topic: "hyp" })
     .then(function(doc) {
     res.render('pages/quizhyp', {items: doc});
 
@@ -367,7 +369,7 @@ app.get('/quizhyp', function(req, res, next) {
 });
 //insert
 app.post('/insert', function(req, res, next) {
-  var item = {
+    var item = {
     type: req.body.type,
     topic: req.body.topic,
     lesson: req.body.lesson,
@@ -377,9 +379,106 @@ app.post('/insert', function(req, res, next) {
 
   var data = new tutmod(item);
   data.save();
-    
+ 
   res.redirect('/edituts');
 });
+
+app.post('/update', function(req, res, next) {
+    var id = req.body.id;
+    tutmod.findById(id, function(err, data) {
+        if (!id || id.length === 0){
+            return res.status(404).json({
+                err: 'no entry exists'
+            });
+        }else{
+            data.type = req.body.type,
+            data.topic = req.body.topic,
+            data.lesson = req.body.lesson,
+            data.content = req.body.content,
+            data.num = req.body.num
+            data.save();
+
+            if (req.body.topic == 'cir' && req.body.lesson == 'def'){
+                return res.redirect('/edituts');
+             }else if (req.body.topic == 'cir' && req.body.lesson == 'sol'){
+                return res.redirect('/solcir');
+             }else if (req.body.topic == 'par' && req.body.lesson == 'def'){
+                return res.redirect('/defpar');
+            }else if (req.body.topic == 'par' && req.body.lesson == 'sol'){
+                return res.redirect('/solpar');
+            }else if (req.body.topic == 'ell' && req.body.lesson == 'def'){
+                return res.redirect('/defell');
+            }else if (req.body.topic == 'ell' && req.body.lesson == 'sol'){
+                return res.redirect('/solell');
+            }else if (req.body.topic == 'hyp' && req.body.lesson == 'def'){
+                return res.redirect('/defhyp');
+            }else if (req.body.topic == 'hyp' && req.body.lesson == 'sol'){
+                return res.redirect('/solhyp');
+            }else if (req.body.topic == 'cir' && req.body.lesson == 'int'){
+                return res.redirect('/intuts');
+            }
+        }
+        
+    });
+
+ 
+});
+
+app.post('/updatequiz', function(req, res, next) {
+    var id = req.body.id;
+    quizmod.findById(id, function(err, data) {
+        if (!id || id.length === 0){
+            return res.status(404).json({
+                err: 'no entry exists'
+            });
+        }else{
+            
+            data.topic = req.body.topic,
+            data.question = req.body.question,
+            data.choice1 = req.body.choice1,
+            data.choice2 = req.body.choice2,
+            data.choice3 = req.body.choice3,
+            data.choice4 = req.body.choice4,
+            data.num = req.body.num,
+           
+            data.save();
+
+            if (req.body.topic == 'cir'){
+                return res.redirect('/editquiz');
+            }else if (req.body.topic == 'par'){
+                return res.redirect('/quizpar');
+            }else if (req.body.topic == 'ell'){
+                return res.redirect('/quizell');
+            }else if (req.body.topic == 'hyp'){
+                return res.redirect('/quizhyp');
+            }
+        }
+        
+    });
+
+ 
+});
+
+
+app.post('/insertquiz', function(req, res, next) {
+        var item = {
+        topic: req.body.topic, //cir/par/ell/hyp
+        question: req.body.question,
+        choice1: req.body.choice1,
+        choice2: req.body.choice2,
+        choice3: req.body.choice3,
+        choice4: req.body.choice4,
+        num: req.body.num,
+       
+    };
+  
+    var data = new quizmod(item);
+    data.save();
+      
+    res.redirect('/editquiz');
+  });
+
+
 //@route POST /upload 
 app.post('/upload', upload.single('file'), (req, res) =>{
     //res.json({ file: req.file });
@@ -404,7 +503,7 @@ app.get('/files', (req, res) => {
 
 //@route GET /files/:filename
 // display single file
-app.get('/files/:filename', (req, res) => {
+app.get('/data/:filename', (req, res) => {
     gfs.files.findOne({filename: req.params.filename}, (err, file) => {
         //check if there are files
         if (!file || file.length === 0) {
@@ -417,6 +516,53 @@ app.get('/files/:filename', (req, res) => {
         return res.json(file);
     });
 });
+
+app.get('/:_id', (req, res, next) => {
+    tutmod.findOne({ _id: req.params._id }, (err, id) => {
+        if (!id || id.length === 0){
+            return res.status(404).json({
+                err: 'no entry exists'
+            });
+        }else{
+            var id2 = id._id;
+            var co = id.content;
+            var ty = id.type;
+            var to = id.topic;
+            var le = id.lesson;
+            var nu = id.num;
+            
+            //return res.json(id.type);
+           return res.render('pages/inpututs', {idy: id2, content: co, type: ty, top: to, less: le, num: nu});
+        
+        }
+        });
+        
+});
+
+app.get('quiz/:_id', (req, res, next) => {
+    quizmod.findOne({ _id: req.params._id }, (err, id) => {
+        if (!id || id.length === 0){
+            return res.status(404).json({
+                err: 'no entry exists'
+            });
+        }else{
+            var id2 = id._id;
+            var to = id.topic;
+            var qu = id.question;
+            var c1 = id.choice1;
+            var c2 = id.choice2;
+            var c3 = id.chocie3;
+            var c4 = id.choice4;
+            var nu = id.num;
+            
+            //return res.json(id.type);
+           return res.render('pages/updatequiz', {idy: id2, topic: to, question: qu, choice1: c1, choice2: c2, choice3: c3, choice4: c4, num: nu});
+        
+        }
+        });
+        
+});
+
 
 //@route GET /image/:filename
 // display image

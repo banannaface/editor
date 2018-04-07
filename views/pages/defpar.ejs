@@ -1,9 +1,9 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <% include ../partials/head %>
     </head>
-    <body style="background-image:url(background.png); background-size: 100% 100%">
+    <body style="background-image:url(background.png); background-size: 100%">
         <br><br>
         <script src="../js/jquery-3.2.1.slim.min.js"></script>
         <script src="../js/popper.min.js"></script>
@@ -18,22 +18,15 @@
                         <% items.forEach(function(item) { %>
                             <div class="media">
                                 <div class="media-body">
-                            
-                                    Content: <%= item.content %>
-                                    ID: <%= item._id %>
+                                    Content: <%= item.content %>    
                                 </div>
-                                    <img class="ml-3" src="del.png" alt="del" style="width:20px; height:20px">
-                                    <img class="ml-3" src="update.png" alt="update" style="width:20px; height:20px">
+                                <a href="<%= item._id %>"><img class="ml-3" src="update.png" alt="update" style="width:20px; height:20px"></a>  
                             </div>
                             <hr>
                         <% }) %>
                     <% } else { %>
                         <p>No records to show.</p>
-                    <% } %>
-
-                    <a href="inpututs" class="btn btn-primary btn-block btn-lg" role="button" aria-pressed="true">Edit</a>
- 
-                
+                    <% } %>  
                 </div>  
             </div>
         </div>
@@ -42,12 +35,4 @@
     <footer>
         <% include ../partials/footer %>   
     </footer>
-</html>-->
-<% if(items){ %>
-    <% items.forEach(function(item) { %>
-       <%= item %><br>
-        
-    <% }) %>
-<% } else { %>
-    <p>No records to show.</p>
-<% } %>
+</html>
