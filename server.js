@@ -8,7 +8,7 @@ const Grid = require('gridfs-stream');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 //const cors = require('cors');
-const morgan = require('morgan');  
+//const morgan = require('morgan');  
 const app = express();
 
 var http = require('http');
@@ -23,8 +23,8 @@ var fs = require('fs');
 app.use(express.static(__dirname + '/bootstrapv4'));
 app.use(express.static(__dirname + '/images'));
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('_method'));
