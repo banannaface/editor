@@ -119,7 +119,7 @@ app.get('/', (req, res) => {
 });
 
 // about page 
-/*app.get('/api/tutorials', function(req, res) {
+app.get('/api/tutorials', function(req, res) {
 
     console.log("fetching tutorials");
 
@@ -133,7 +133,7 @@ app.get('/', (req, res) => {
         res.json(tutorials); // return all reviews in JSON format
     });
 });
-app.get('/api/quiz', function(req, res) {
+/*app.get('/api/quiz', function(req, res) {
 
     console.log("fetching quizzes");
 
