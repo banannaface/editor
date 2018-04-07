@@ -16,19 +16,41 @@ var fs = require('fs');
 //var data = fs.readFileSync('defcir.json');
 //var datamismo = JSON.parse(data);
 
+const mongoURI = 'mongodb://anna:wannabearockstar@ds012678.mlab.com:12678/agtutsdtbs';
+
+const conn = mongoose.createConnection(mongoURI);
+mongoose.connect(mongoURI);
 
  
 
 
 app.use(express.static(__dirname + '/bootstrapv4'));
 app.use(express.static(__dirname + '/images'));
-
 //app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('_method'));
 //app.use(cors());
+//add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 /*app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -37,10 +59,7 @@ app.use(methodOverride('_method'));
     next();
  });
  */
-const mongoURI = 'mongodb://anna:wannabearockstar@ds012678.mlab.com:12678/agtutsdtbs';
 
-const conn = mongoose.createConnection(mongoURI);
-mongoose.connect(mongoURI);
 var Schema = mongoose.Schema;
 
 var tuts = new Schema({
