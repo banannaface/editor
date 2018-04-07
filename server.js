@@ -7,7 +7,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const cors = require('cors');
+//const cors = require('cors');
 const morgan = require('morgan');  
 const app = express();
 
@@ -28,15 +28,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('_method'));
-app.use(cors());
+//app.use(cors());
 
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
  });
- 
+ */
 const mongoURI = 'mongodb://anna:wannabearockstar@ds012678.mlab.com:12678/agtutsdtbs';
 
 const conn = mongoose.createConnection(mongoURI);
@@ -119,7 +119,7 @@ app.get('/', (req, res) => {
 });
 
 // about page 
-app.get('/api/tutorials', function(req, res) {
+/*app.get('/api/tutorials', function(req, res) {
 
     console.log("fetching tutorials");
 
@@ -146,7 +146,7 @@ app.get('/api/quiz', function(req, res) {
 
         res.json(quizzes); // return all reviews in JSON format
     });
-});
+});*/
 
 app.get('/about', function(req, res) {
     res.render('pages/about');
