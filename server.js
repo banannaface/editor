@@ -109,6 +109,21 @@ app.get('/', (req, res) => {
 });
 
 // about page 
+app.get('/api/tutorials', function(req, res) {
+
+    console.log("fetching tutorials");
+
+    // use mongoose to get all reviews in the database
+    tutmod.find(function(err, tutorials) {
+
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err)
+            res.send(err)
+
+        res.json(tutorials); // return all reviews in JSON format
+    });
+});
+
 
 app.get('/about', function(req, res) {
     res.render('pages/about');
@@ -172,6 +187,7 @@ app.get('/solcir', function(req, res, next) {
 app.get('/defpar', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "par" }, { lesson: "def" } ] })
     .then(function(doc) {
+        //console.log(doc);
     res.render('pages/defpar', {items: doc});
         var bytedata = JSON.stringify(doc, null, 2);
         fs.writeFile('defpar.json', bytedata, finished);

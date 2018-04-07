@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
     <head>
         <% include ../partials/head %>
@@ -42,4 +42,12 @@
     <footer>
         <% include ../partials/footer %>   
     </footer>
-</html>
+</html>-->
+<% if(items){ %>
+    <% items.forEach(function(item) { %>
+       <%= item %><br>
+        
+    <% }) %>
+<% } else { %>
+    <p>No records to show.</p>
+<% } %>
