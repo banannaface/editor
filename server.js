@@ -32,33 +32,23 @@ app.use(bodyParser.json());
 //app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('_method'));
 //app.use(cors());
+
+
 //add headers
 app.use(function (req, res, next) {
-
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
-
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
-
     // Pass to next layer of middleware
     next();
 });
 
-/*app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
- });
- */
 
 var Schema = mongoose.Schema;
 
@@ -137,35 +127,128 @@ app.get('/', (req, res) => {
  
 });
 
-// about page 
-app.get('/api/tutorials', function(req, res) {
-
-    console.log("fetching tutorials");
-
+// tutoprials for app to get
+app.get('/api/intall', function(req, res) {
+    console.log("fetching intro tutorial");
     // use mongoose to get all reviews in the database
-    tutmod.find(function(err, tutorials) {
-
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "int" } ] })
+        .then(function(err, introtuts) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err)
             res.send(err)
-
-        res.json(tutorials); // return all reviews in JSON format
+        res.json(introtuts); // return all reviews in JSON format
     });
 });
-/*app.get('/api/quiz', function(req, res) {
 
-    console.log("fetching quizzes");
-
-    // use mongoose to get all reviews in the database
-    quizmod.find(function(err, quizzes) {
-
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+app.get('/api/defcir', function(req, res) {
+    console.log("fetching defcir");
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] })
+        .then(function(err, defcir) {
         if (err)
             res.send(err)
-
-        res.json(quizzes); // return all reviews in JSON format
+        res.json(defcir);
     });
-});*/
+});
+app.get('/api/solcir', function(req, res) {
+    console.log("fetching solcir");
+    tutmod.find({ $and: [ { topic: "cir" }, { lesson: "sol" } ] })
+        .then(function(err, solcir) {
+        if (err)
+            res.send(err)
+        res.json(solcir);
+    });
+});
+app.get('/api/defpar', function(req, res) {
+    console.log("fetching defpar");
+    tutmod.find({ $and: [ { topic: "par" }, { lesson: "def" } ] })
+        .then(function(err, defpar) {
+        if (err)
+            res.send(err)
+        res.json(defpar);
+    });
+});
+app.get('/api/solpar', function(req, res) {
+    console.log("fetching solpar");
+    tutmod.find({ $and: [ { topic: "par" }, { lesson: "sol" } ] })
+        .then(function(err, solpar) {
+        if (err)
+            res.send(err)
+        res.json(solpar);
+    });
+});
+app.get('/api/defell', function(req, res) {
+    console.log("fetching defell");
+    tutmod.find({ $and: [ { topic: "ell" }, { lesson: "def" } ] })
+        .then(function(err, defell) {
+        if (err)
+            res.send(err)
+        res.json(defell);
+    });
+});
+app.get('/api/solell', function(req, res) {
+    console.log("fetching solell");
+    tutmod.find({ $and: [ { topic: "ell" }, { lesson: "sol" } ] })
+        .then(function(err, solell) {
+        if (err)
+            res.send(err)
+        res.json(solell);
+    });
+});
+app.get('/api/defhyp', function(req, res) {
+    console.log("fetching defhyp");
+    tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "def" } ] })
+        .then(function(err, defhyp) {
+        if (err)
+            res.send(err)
+        res.json(defhyp);
+    });
+});
+app.get('/api/solhyp', function(req, res) {
+    console.log("fetching solhyp");
+    tutmod.find({ $and: [ { topic: "hyp" }, { lesson: "sol" } ] })
+        .then(function(err, solhyp) {
+        if (err)
+            res.send(err)
+        res.json(solhyp);
+    });
+});
+// quizzes for app to get
+app.get('/api/cirquiz', function(req, res) {
+    console.log("fetching cirquiz");
+    quizmod.find({ topic: "cir" })
+        .then(function(err, cirquizzes) {
+        if (err)
+            res.send(err)
+        res.json(cirquizzes); 
+    });
+});
+app.get('/api/parquiz', function(req, res) {
+    console.log("fetching parquiz");
+    quizmod.find({ topic: "par" })
+        .then(function(err, parquizzes) {
+        if (err)
+            res.send(err)
+        res.json(parquizzes); 
+    });
+});
+app.get('/api/ellquiz', function(req, res) {
+    console.log("fetching ellquiz");
+    quizmod.find({ topic: "ell" })
+        .then(function(err, ellquizzes) {
+        if (err)
+            res.send(err)
+        res.json(ellquizzes); 
+    });
+});
+app.get('/api/hypquiz', function(req, res) {
+    console.log("fetching hypquiz");
+    quizmod.find({ topic: "hyp" })
+        .then(function(err, hypquizzes) {
+        if (err)
+            res.send(err)
+        res.json(quizzes); 
+    });
+});
 
 app.get('/about', function(req, res) {
     res.render('pages/about');
@@ -185,13 +268,7 @@ app.get('/intuts', function(req, res, next) {
       .then(function(doc) {
          
             res.render('pages/intuts', {items: doc});
-            
-            var bytedata = JSON.stringify(doc, null, 2);
-            fs.writeFile('intuts.json', bytedata, finished);
-
-            function finished(err){
-                console.log('all set');
-            }
+           
       });
   
   });
@@ -200,14 +277,8 @@ app.get('/edituts', function(req, res, next) {
     tutmod.find({ $and: [ { topic: "cir" }, { lesson: "def" } ] })
       .then(function(doc) {
          
-            res.render('pages/edituts', {items: doc});
+        res.render('pages/edituts', {items: doc});
             
-            var bytedata = JSON.stringify(doc, null, 2);
-            fs.writeFile('defcir.json', bytedata, finished);
-
-            function finished(err){
-                console.log('all set');
-            }
       });
   
   });
@@ -218,12 +289,6 @@ app.get('/solcir', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/solcir', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('solcir.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }
     });
 });
 app.get('/defpar', function(req, res, next) {
@@ -231,13 +296,7 @@ app.get('/defpar', function(req, res, next) {
     .then(function(doc) {
         //console.log(doc);
     res.render('pages/defpar', {items: doc});
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('defpar.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }
-
+      
     });
 });
 
@@ -245,12 +304,7 @@ app.get('/solpar', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "par" }, { lesson: "sol" } ] })
     .then(function(doc) {
     res.render('pages/solpar', {items: doc});
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('solpar.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
+      
     });
 });
 app.get('/defell', function(req, res, next) {
@@ -258,24 +312,13 @@ app.get('/defell', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/defell', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('defell.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 app.get('/solell', function(req, res, next) {
   tutmod.find({ $and: [ { topic: "ell" }, { lesson: "sol" } ] })
     .then(function(doc) {
     res.render('pages/solell', {items: doc});
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('solell.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
+    
     });
 });
 app.get('/defhyp', function(req, res, next) {
@@ -283,12 +326,6 @@ app.get('/defhyp', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/defhyp', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('defhyp.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 app.get('/solhyp', function(req, res, next) {
@@ -296,12 +333,6 @@ app.get('/solhyp', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/solhyp', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('solhyp.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 
@@ -311,12 +342,6 @@ app.get('/editquiz', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/editquiz', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('quizcir.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 app.get('/quizpar', function(req, res, next) {
@@ -324,12 +349,6 @@ app.get('/quizpar', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/quizpar', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('quizpar.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 app.get('/quizell', function(req, res, next) {
@@ -337,12 +356,6 @@ app.get('/quizell', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/quizell', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('quizell.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 app.get('/quizhyp', function(req, res, next) {
@@ -350,12 +363,6 @@ app.get('/quizhyp', function(req, res, next) {
     .then(function(doc) {
     res.render('pages/quizhyp', {items: doc});
 
-        var bytedata = JSON.stringify(doc, null, 2);
-        fs.writeFile('quizhyp.json', bytedata, finished);
-
-        function finished(err){
-            console.log('all set');
-        }   
     });
 });
 //insert
